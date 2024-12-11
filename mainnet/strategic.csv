@@ -1,2 +1,2 @@
-address,amount
-elys1vsyrn23dr4rj7lhlntlcmne55jk2tfjvvykv9d,44500000000000
+given address,elys address,vesting amount,bank,account type,vest start time,vest end time
+elys1vsyrn23dr4rj7lhlntlcmne55jk2tfjvvykv9d,elys1vsyrn23dr4rj7lhlntlcmne55jk2tfjvvykv9d,30500000,44500000,/cosmos.vesting.v1beta1.PeriodicVestingAccount,"Wed, 11 Dec 2024 09:30:00 GMT","Fri, 26 Nov 2027 09:30:00 GMT"

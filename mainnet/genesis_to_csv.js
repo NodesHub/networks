@@ -12,7 +12,6 @@ const {
 
 // consts
 const preSeedAddress = "elys13647xwfw6swdkexzn90xjym4erk3qwh3vq9y4k";
-const preSeedAllocation = 6000000000000;
 const seedAddress = "elys1gefdqpj2m24aunhadazufqd6ex5ts9uydg58dt";
 const protocolRevenueAddress = "elys1uqznyaahdmp3ay8zex5cwf729ggdhc45dtys4f";
 const strategicReserveAddress = "elys1vsyrn23dr4rj7lhlntlcmne55jk2tfjvvykv9d";
@@ -24,7 +23,7 @@ const publicAddress = "elys1akmdyat0d33net2rgqnpm28xhydkhgraptmhey";
 const privateAddress = "elys1zxgwtsut7xn90ulzhtfljsms94y8sy2k05qn34";
 const advisorAddress = "elys1nkk8r3s4c9pvy492ryr23skml56uh8n776xqzh";
 
-const balancesMap = balances.reduce((acc, balance) => {
+const bankBalancesMap = balances.reduce((acc, balance) => {
   acc[balance.address] = balance.coins;
   return acc;
 }, {});
@@ -74,32 +73,57 @@ function generateCsv(accounts, fileName, accountPrefix = "elys") {
   csvStream.pipe(writeStream);
 
   // Write the header
-  csvStream.write(["address", "amount"]);
+  csvStream.write([
+    "given address",
+    "elys address",
+    "vesting amount",
+    "bank",
+    "account type",
+    "vest start time",
+    "vest end time",
+  ]);
 
-  // Adds preSeed account data to the CSV stream
+  // Adds account data to the CSV stream
   accounts.forEach((account) => {
-    const baseAccount = account.base_vesting_account.base_account;
-    const coins = balancesMap[baseAccount.address];
+    const start_time = account.start_time;
+    const type = account["@type"];
+    const { base_account, original_vesting, end_time } =
+      account.base_vesting_account;
+    const bankCoins = bankBalancesMap[base_account.address];
 
-    if (coins.length > 1) {
-      throw new Error(`account ${baseAccount.address} has more than one coin`);
+    if (bankCoins.length > 1) {
+      throw new Error(`account ${base_account.address} has more than one coin`);
     }
-    if (coins[0].denom !== "uelys") {
-      throw new Error(`Invalid denom for ${baseAccount.address}`);
+    if (bankCoins[0].denom !== "uelys") {
+      throw new Error(`Invalid denom for ${base_account.address}`);
     }
 
-    const formattedAddress = formatAddress(baseAccount.address, accountPrefix);
-    csvStream.write([formattedAddress, coins[0].amount]);
+    if (original_vesting?.length > 1) {
+      throw new Error(
+        `account ${base_account.address} has more than one vesting coin`
+      );
+    }
+
+    const formattedAddress = formatAddress(base_account.address, accountPrefix);
+    csvStream.write([
+      formattedAddress,
+      base_account.address,
+      original_vesting[0].amount / 1_000_000,
+      bankCoins[0].amount / 1_000_000,
+      type,
+      new Date(start_time * 1000).toUTCString(),
+      new Date(end_time * 1000).toUTCString(),
+    ]);
   });
 
   // Calculate the total amount of coins in the accounts
-  const totalAmount = accounts.reduce((acc, account) => {
-    const baseAccount = account.base_vesting_account.base_account;
-    const coins = balancesMap[baseAccount.address];
-    return acc + parseInt(coins[0].amount);
-  }, 0);
+  // const totalAmount = accounts.reduce((acc, account) => {
+  //   const baseAccount = account.base_vesting_account.base_account;
+  //   const coins = bankBalancesMap[baseAccount.address];
+  //   return acc + parseInt(coins[0].amount);
+  // }, 0);
 
-  console.log("Total amount in ", fileName, totalAmount);
+  // console.log("Total amount in ", fileName, totalAmount / 1_000_000);
 
   // End the CSV stream
   csvStream.end();

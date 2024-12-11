@@ -1,8 +1,8 @@
-address,amount
-elys1gt22m4cyqxd8pwzpmuhyjkldh75l7hxswca7r3,178010000000
-elys1twegecwkgjy0ghgmvl5qwq7ntwnghmv8hqrngp,124999875000
-elys19mk5ka3hhad3fuedm4637d68n2jrvj6gd3g5tj,124999875000
-elys1q8teur40emyun60et4wh5z6yj5669stgkjv74v,124999875000
-elys10jcxtfdghw53z24kt3ys7fdgpwhqhk3qnl63vm,31249750000
-elys1w8zcz8u6f64xrkvl5c3xcjxslzfa7mn6ru44n9,25000500000
-elys1zxgwtsut7xn90ulzhtfljsms94y8sy2k05qn34,6390740125000
+given address,elys address,vesting amount,bank,account type,vest start time,vest end time
+cosmos1gt22m4cyqxd8pwzpmuhyjkldh75l7hxswcyewn,elys1gt22m4cyqxd8pwzpmuhyjkldh75l7hxswca7r3,178010,178010,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Thu, 10 Apr 2025 09:30:00 GMT","Sun, 05 Apr 2026 09:30:00 GMT"
+cosmos1twegecwkgjy0ghgmvl5qwq7ntwnghmv8hq659r,elys1twegecwkgjy0ghgmvl5qwq7ntwnghmv8hqrngp,124999.875,124999.875,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Thu, 10 Apr 2025 09:30:00 GMT","Sun, 05 Apr 2026 09:30:00 GMT"
+cosmos19mk5ka3hhad3fuedm4637d68n2jrvj6gd33nxs,elys19mk5ka3hhad3fuedm4637d68n2jrvj6gd3g5tj,124999.875,124999.875,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Thu, 10 Apr 2025 09:30:00 GMT","Sun, 05 Apr 2026 09:30:00 GMT"
+cosmos1q8teur40emyun60et4wh5z6yj5669stgkj4ecw,elys1q8teur40emyun60et4wh5z6yj5669stgkjv74v,124999.875,124999.875,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Thu, 10 Apr 2025 09:30:00 GMT","Sun, 05 Apr 2026 09:30:00 GMT"
+cosmos10jcxtfdghw53z24kt3ys7fdgpwhqhk3qnlrkpe,elys10jcxtfdghw53z24kt3ys7fdgpwhqhk3qnl63vm,31249.75,31249.75,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Thu, 10 Apr 2025 09:30:00 GMT","Sun, 05 Apr 2026 09:30:00 GMT"
+cosmos1w8zcz8u6f64xrkvl5c3xcjxslzfa7mn6ruvj78,elys1w8zcz8u6f64xrkvl5c3xcjxslzfa7mn6ru44n9,25000.5,25000.5,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Thu, 10 Apr 2025 09:30:00 GMT","Sun, 05 Apr 2026 09:30:00 GMT"
+cosmos1zxgwtsut7xn90ulzhtfljsms94y8sy2k05e5uh,elys1zxgwtsut7xn90ulzhtfljsms94y8sy2k05qn34,5515740.125,6390740.125,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Thu, 10 Apr 2025 09:30:00 GMT","Sun, 05 Apr 2026 09:30:00 GMT"

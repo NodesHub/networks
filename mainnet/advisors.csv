@@ -1,22 +1,22 @@
-address,amount
-elys1u6l2yfmcrnu7jqlc5t63mxaft3dzc30vekvepd,164700000000
-elys1fcjp220djjm0qshk7z8yfkmxcgy79kzennrd8z,617142600000
-elys1upjczgrv9ulk0s2a46n82ypmndwytdlz3um36w,408857400000
-elys1rcjnj0jfk6s53rj8l7h7hex0uxcgwew2hfcle5,450000000000
-elys1axam5cg7jdmt47zc28pf8hx6n0wx3gek76kue3,339428700000
-elys1fhxc5q35y9e2splmquyw40a2cqfhvhshvgymwe,12857400000
-elys1ugscjl6jfaaesc0lyva5qjxpd0deg6czgknq5q,105428700000
-elys1nl7erk2zur3djck348k2403pw0rj8tal3mpjgl,61713900000
-elys1usq2fwzletecvnvzh5aac9ga7d6tcdm838lzdt,11572200000
-elys1eh9kefjc20j8z6jvernkcwamxzjzdnsc0h5qnn,7328700000
-elys1tv0e8fufs9dajquucwkn5ua6qcc2enr9dp4z8f,5400000000
-elys1n7uujtnwd93xpnvcek7glh6088d5uswa72nvr8,5400000000
-elys1rar7c3qymngzxcllj9fjw246sapaz6jdv4056e,5400000000
-elys1n35zqjedrjgl4tm8tfpuvdfqnxxm9fumx98te3,5400000000
-elys1z6npyaxw29ycag2kw8tnuemmmr4w6c30ru3wy9,5400000000
-elys15y0ja9a6pa54g3z70jrgvwaq9dddtkslms2pkh,5400000000
-elys16dw2qv8lug78j0twezveffdp3j6lz500gq3p98,5400000000
-elys16a2fp8t866jk9m0vx2xf9wnf6nh48lzlevszqr,5400000000
-elys1a399deq7dqd5e9tucv8yjalwadnvl8u448fanj,5400000000
-elys1e3vdsl5hgtpmvtwu5xmud0xzy7mddq62z9kkxw,5400000000
-elys1nkk8r3s4c9pvy492ryr23skml56uh8n776xqzh,266970400000
+given address,elys address,vesting amount,bank,account type,vest start time,vest end time
+cosmos1u6l2yfmcrnu7jqlc5t63mxaft3dzc30vek47v0,elys1u6l2yfmcrnu7jqlc5t63mxaft3dzc30vekvepd,164700,164700,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos1fcjp220djjm0qshk7z8yfkmxcgy79kzenn622q,elys1fcjp220djjm0qshk7z8yfkmxcgy79kzennrd8z,617142.6,617142.6,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos1upjczgrv9ulk0s2a46n82ypmndwytdlz3uzkhv,elys1upjczgrv9ulk0s2a46n82ypmndwytdlz3um36w,408857.4,408857.4,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos1rcjnj0jfk6s53rj8l7h7hex0uxcgwew2hfpc5k,elys1rcjnj0jfk6s53rj8l7h7hex0uxcgwew2hfcle5,450000,450000,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos1axam5cg7jdmt47zc28pf8hx6n0wx3gek760m5n,elys1axam5cg7jdmt47zc28pf8hx6n0wx3gek76kue3,339428.7,339428.7,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos1fhxc5q35y9e2splmquyw40a2cqfhvhshvgaurm,elys1fhxc5q35y9e2splmquyw40a2cqfhvhshvgymwe,12857.4,12857.4,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos1ugscjl6jfaaesc0lyva5qjxpd0deg6czgk28ez,elys1ugscjl6jfaaesc0lyva5qjxpd0deg6czgknq5q,105428.7,105428.7,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos1nl7erk2zur3djck348k2403pw0rj8tal3mc49a,elys1nl7erk2zur3djck348k2403pw0rj8tal3mpjgl,61713.9,61713.9,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos1usq2fwzletecvnvzh5aac9ga7d6tcdm838x9qf,elys1usq2fwzletecvnvzh5aac9ga7d6tcdm838lzdt,11572.2,11572.2,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos1eh9kefjc20j8z6jvernkcwamxzjzdnsc0hd873,elys1eh9kefjc20j8z6jvernkcwamxzjzdnsc0h5qnn,7328.7,7328.7,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos1tv0e8fufs9dajquucwkn5ua6qcc2enr9dpv92t,elys1tv0e8fufs9dajquucwkn5ua6qcc2enr9dp4z8f,5400,5400,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos1n7uujtnwd93xpnvcek7glh6088d5uswa722tw9,elys1n7uujtnwd93xpnvcek7glh6088d5uswa72nvr8,5400,5400,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos1rar7c3qymngzxcllj9fjw246sapaz6jdv4knhm,elys1rar7c3qymngzxcllj9fjw246sapaz6jdv4056e,5400,5400,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos1n35zqjedrjgl4tm8tfpuvdfqnxxm9fumx97v5n,elys1n35zqjedrjgl4tm8tfpuvdfqnxxm9fumx98te3,5400,5400,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos1z6npyaxw29ycag2kw8tnuemmmr4w6c30rugff8,elys1z6npyaxw29ycag2kw8tnuemmmr4w6c30ru3wy9,5400,5400,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos15y0ja9a6pa54g3z70jrgvwaq9dddtkslmsnxm4,elys15y0ja9a6pa54g3z70jrgvwaq9dddtkslms2pkh,5400,5400,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos16dw2qv8lug78j0twezveffdp3j6lz500gqgxg9,elys16dw2qv8lug78j0twezveffdp3j6lz500gq3p98,5400,5400,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos16a2fp8t866jk9m0vx2xf9wnf6nh48lzlevf9dp,elys16a2fp8t866jk9m0vx2xf9wnf6nh48lzlevszqr,5400,5400,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos1a399deq7dqd5e9tucv8yjalwadnvl8u448s67s,elys1a399deq7dqd5e9tucv8yjalwadnvl8u448fanj,5400,5400,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos1e3vdsl5hgtpmvtwu5xmud0xzy7mddq62z903tv,elys1e3vdsl5hgtpmvtwu5xmud0xzy7mddq62z9kkxw,5400,5400,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
+cosmos1nkk8r3s4c9pvy492ryr23skml56uh8n776l804,elys1nkk8r3s4c9pvy492ryr23skml56uh8n776xqzh,16970.4,266970.4,/cosmos.vesting.v1beta1.ContinuousVestingAccount,"Sat, 10 May 2025 09:30:00 GMT","Tue, 05 May 2026 09:30:00 GMT"
