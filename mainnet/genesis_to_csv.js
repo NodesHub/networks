@@ -56,6 +56,9 @@ const strategic = accounts.filter(
   (account) => account.test_account === "strategic"
 );
 const team = accounts.filter((account) => account.test_account === "team");
+const airdrop = accounts.filter(
+  (account) => account.test_account === "airdrop"
+);
 
 generateCsv(preSeed, "pre_seed.csv", "cosmos");
 generateCsv(seed, "seed.csv", "cosmos");
@@ -64,6 +67,7 @@ generateCsv(advisors, "advisors.csv", "cosmos");
 generateCsv(strategic, "strategic.csv");
 generateCsv(communityFund, "community_fund.csv");
 generateCsv(team, "team.csv");
+generateCsv(airdrop, "airdrop.csv");
 
 // Utilities
 
