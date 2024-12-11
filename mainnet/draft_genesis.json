@@ -79,6 +79,7 @@
       },
       "accounts": [
         {
+          "test_account": "pre-seed",
           "@type": "/cosmos.auth.v1beta1.BaseAccount",
           "address": "elys13647xwfw6swdkexzn90xjym4erk3qwh3vq9y4k",
           "pub_key": null,
@@ -4349,10 +4350,7 @@
         "clients_consensus": [],
         "clients_metadata": [],
         "params": {
-          "allowed_clients": [
-            "06-solomachine",
-            "07-tendermint"
-          ]
+          "allowed_clients": ["06-solomachine", "07-tendermint"]
         },
         "create_localhost": false,
         "next_client_sequence": "0"
@@ -4400,9 +4398,7 @@
         "port": "icahost",
         "params": {
           "host_enabled": true,
-          "allow_messages": [
-            "*"
-          ]
+          "allow_messages": ["*"]
         }
       }
     },
@@ -4641,9 +4637,7 @@
         "max_bytes": "100000"
       },
       "validator": {
-        "pub_key_types": [
-          "ed25519"
-        ]
+        "pub_key_types": ["ed25519"]
       },
       "version": {
         "app": "0"
