@@ -40,6 +40,7 @@ validateBankModule();
 const preSeed = accounts.filter(
   (account) => account.test_account === "pre-seed"
 );
+const seed = accounts.filter((account) => account.test_account === "seed");
 const privateRound = accounts.filter(
   (account) => account.test_account === "private-round"
 );
@@ -55,13 +56,18 @@ const strategic = accounts.filter(
   (account) => account.test_account === "strategic"
 );
 const team = accounts.filter((account) => account.test_account === "team");
+const airdrop = accounts.filter(
+  (account) => account.test_account === "airdrop"
+);
 
 generateCsv(preSeed, "pre_seed.csv", "cosmos");
+generateCsv(seed, "seed.csv", "cosmos");
 generateCsv(privateRound, "private_round.csv", "cosmos");
 generateCsv(advisors, "advisors.csv", "cosmos");
 generateCsv(strategic, "strategic.csv");
 generateCsv(communityFund, "community_fund.csv");
 generateCsv(team, "team.csv");
+generateCsv(airdrop, "airdrop.csv");
 
 // Utilities
 
@@ -85,34 +91,36 @@ function generateCsv(accounts, fileName, accountPrefix = "elys") {
 
   // Adds account data to the CSV stream
   accounts.forEach((account) => {
-    const start_time = account.start_time;
     const type = account["@type"];
-    const { base_account, original_vesting, end_time } =
-      account.base_vesting_account;
-    const bankCoins = bankBalancesMap[base_account.address];
+    const vesting_account = account.base_vesting_account;
+    const address = vesting_account?.base_account?.address ?? account.address;
+    const original_vesting = vesting_account?.original_vesting;
+    const start_time = account.start_time;
+    const end_time = vesting_account?.end_time;
+    // const { base_account, original_vesting, end_time } =
+    //   account.base_vesting_account;
+    const bankCoins = bankBalancesMap[address];
 
     if (bankCoins.length > 1) {
-      throw new Error(`account ${base_account.address} has more than one coin`);
+      throw new Error(`account ${address} has more than one coin`);
     }
     if (bankCoins[0].denom !== "uelys") {
-      throw new Error(`Invalid denom for ${base_account.address}`);
+      throw new Error(`Invalid denom for ${address}`);
     }
 
     if (original_vesting?.length > 1) {
-      throw new Error(
-        `account ${base_account.address} has more than one vesting coin`
-      );
+      throw new Error(`account ${address} has more than one vesting coin`);
     }
 
-    const formattedAddress = formatAddress(base_account.address, accountPrefix);
+    const formattedAddress = formatAddress(address, accountPrefix);
     csvStream.write([
       formattedAddress,
-      base_account.address,
-      original_vesting[0].amount / 1_000_000,
+      address,
+      (original_vesting?.[0].amount ?? 0) / 1_000_000,
       bankCoins[0].amount / 1_000_000,
       type,
-      new Date(start_time * 1000).toUTCString(),
-      new Date(end_time * 1000).toUTCString(),
+      start_time && new Date(start_time * 1000).toUTCString(),
+      end_time && new Date(end_time * 1000).toUTCString(),
     ]);
   });
 
