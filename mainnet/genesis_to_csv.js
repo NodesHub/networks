@@ -7,6 +7,7 @@ const {
   app_state: {
     auth: { accounts },
     bank: { balances },
+    commitment,
   },
 } = require("./draft_genesis.json");
 
@@ -25,6 +26,24 @@ const advisorAddress = "elys1nkk8r3s4c9pvy492ryr23skml56uh8n776xqzh";
 
 const bankBalancesMap = balances.reduce((acc, balance) => {
   acc[balance.address] = balance.coins;
+  return acc;
+}, {});
+
+// Create a accountsMap keyed by address to store the accounts regardless the type
+const accountsMap = accounts.reduce((acc, account) => {
+  switch (account["@type"]) {
+    case "/cosmos.auth.v1beta1.BaseAccount": {
+      acc[account.address] = account;
+      break;
+    }
+    case "/cosmos.vesting.v1beta1.ContinuousVestingAccount":
+    case "/cosmos.vesting.v1beta1.PeriodicVestingAccount":
+      acc[account.base_vesting_account.base_account.address] = account;
+      break;
+    default: {
+      throw new Error(`Account type not handled: ${account["@type"]}`);
+    }
+  }
   return acc;
 }, {});
 
@@ -60,19 +79,30 @@ const airdrop = accounts.filter(
   (account) => account.test_account === "airdrop"
 );
 
-generateCsv(preSeed, "pre_seed.csv", "cosmos");
-generateCsv(seed, "seed.csv", "cosmos");
-generateCsv(privateRound, "private_round.csv", "cosmos");
-generateCsv(advisors, "advisors.csv", "cosmos");
-generateCsv(strategic, "strategic.csv");
-generateCsv(communityFund, "community_fund.csv");
-generateCsv(team, "team.csv");
-generateCsv(airdrop, "airdrop.csv");
+// Commitments data structure
+const atomStakers = commitment.atom_stakers;
+const nftHolders = commitment.nft_holders;
+const cadets = commitment.cadets;
+const governors = commitment.governors;
+
+generateAccountsCsv(preSeed, "pre_seed.csv", "cosmos");
+generateAccountsCsv(seed, "seed.csv", "cosmos");
+generateAccountsCsv(privateRound, "private_round.csv", "cosmos");
+generateAccountsCsv(advisors, "advisors.csv", "cosmos");
+generateAccountsCsv(strategic, "strategic.csv");
+generateAccountsCsv(communityFund, "community_fund.csv");
+generateAccountsCsv(team, "team.csv");
+generateAccountsCsv(airdrop, "airdrop.csv");
+
+generateCommitments(atomStakers, "atom_stakers.csv", "cosmos");
+generateCommitments(nftHolders, "nft_holders.csv", "stars");
+generateCommitments(cadets, "cadets.csv", "elys");
+generateCommitments(governors, "governors.csv", "elys");
 
 // Utilities
 
 // Adds all the accounts into a csv file
-function generateCsv(accounts, fileName, accountPrefix = "elys") {
+function generateAccountsCsv(accounts, fileName, accountPrefix = "elys") {
   const writeStream = fs.createWriteStream(path.join(__dirname, fileName));
   const csvStream = csv.format({ headers: true }); // Create a CSV stream
   // Pipe the CSV stream to the file write stream
@@ -97,8 +127,6 @@ function generateCsv(accounts, fileName, accountPrefix = "elys") {
     const original_vesting = vesting_account?.original_vesting;
     const start_time = account.start_time;
     const end_time = vesting_account?.end_time;
-    // const { base_account, original_vesting, end_time } =
-    //   account.base_vesting_account;
     const bankCoins = bankBalancesMap[address];
 
     if (bankCoins.length > 1) {
@@ -121,6 +149,63 @@ function generateCsv(accounts, fileName, accountPrefix = "elys") {
       type,
       start_time && new Date(start_time * 1000).toUTCString(),
       end_time && new Date(end_time * 1000).toUTCString(),
+    ]);
+  });
+
+  // Calculate the total amount of coins in the accounts
+  // const totalAmount = accounts.reduce((acc, account) => {
+  //   const baseAccount = account.base_vesting_account.base_account;
+  //   const coins = bankBalancesMap[baseAccount.address];
+  //   return acc + parseInt(coins[0].amount);
+  // }, 0);
+
+  // console.log("Total amount in ", fileName, totalAmount / 1_000_000);
+
+  // End the CSV stream
+  csvStream.end();
+
+  writeStream.on("finish", () => {
+    console.log(`${fileName} file successfully created!`);
+  });
+}
+
+function generateCommitments(commitments, fileName, accountPrefix = "elys") {
+  const writeStream = fs.createWriteStream(path.join(__dirname, fileName));
+  const csvStream = csv.format({ headers: true }); // Create a CSV stream
+  // Pipe the CSV stream to the file write stream
+  csvStream.pipe(writeStream);
+
+  // Write the header
+  csvStream.write([
+    "given address",
+    "elys address",
+    "commitment",
+    "acount_type",
+    "bank",
+  ]);
+
+  // Adds account data to the CSV stream
+  commitments.forEach((commitment) => {
+    const address = commitment.address;
+    const bankCoins = bankBalancesMap[address];
+
+    // Some commitment like atom staker are also in the seed accounts
+    const account = accountsMap[address];
+
+    if (bankCoins?.length > 1) {
+      throw new Error(`account ${address} has more than one coin`);
+    }
+    if (bankCoins?.[0].denom && bankCoins?.[0].denom !== "uelys") {
+      throw new Error(`Invalid denom for ${address}`);
+    }
+
+    const formattedAddress = formatAddress(address, accountPrefix);
+    csvStream.write([
+      formattedAddress,
+      address,
+      commitment.amount / 1_000_000,
+      account?.test_account ?? "",
+      (bankCoins?.[0]?.amount ?? 0) / 1_000_000,
     ]);
   });
 
