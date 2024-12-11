@@ -184,6 +184,7 @@ function generateCommitments(commitments, fileName, accountPrefix = "elys") {
     "bank",
   ]);
 
+  let total = 0;
   // Adds account data to the CSV stream
   commitments.forEach((commitment) => {
     const address = commitment.address;
@@ -198,6 +199,8 @@ function generateCommitments(commitments, fileName, accountPrefix = "elys") {
     if (bankCoins?.[0].denom && bankCoins?.[0].denom !== "uelys") {
       throw new Error(`Invalid denom for ${address}`);
     }
+
+    total += Number(commitment.amount);
 
     const formattedAddress = formatAddress(address, accountPrefix);
     csvStream.write([
@@ -216,7 +219,7 @@ function generateCommitments(commitments, fileName, accountPrefix = "elys") {
   //   return acc + parseInt(coins[0].amount);
   // }, 0);
 
-  // console.log("Total amount in ", fileName, totalAmount / 1_000_000);
+  console.log("Total amount in ", fileName, total);
 
   // End the CSV stream
   csvStream.end();
