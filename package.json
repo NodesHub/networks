@@ -1,0 +1,15 @@
+{
+  "name": "networks",
+  "version": "1.0.0",
+  "description": "This repository contains the official chain configurations and setup instructions for the Elys Network chains, including testnet and mainnet (when available).",
+  "main": "mainnet/genesis_to_csv.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@cosmjs/encoding": "^0.32.4",
+    "fast-csv": "^5.0.2"
+  }
+}
